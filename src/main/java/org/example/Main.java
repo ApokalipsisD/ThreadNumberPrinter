@@ -10,5 +10,12 @@ public class Main {
 
         evenThread.start();
         oddThread.start();
+
+        try {
+            evenThread.join();
+            oddThread.join();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
