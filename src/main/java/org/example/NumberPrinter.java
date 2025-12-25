@@ -1,6 +1,11 @@
 package org.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class NumberPrinter {
+    private static final Logger log = LoggerFactory.getLogger(NumberPrinter.class);
+
     private int current = 0;
     private final int max;
 
@@ -24,7 +29,7 @@ public class NumberPrinter {
                 return;
             }
 
-            System.out.println(Thread.currentThread().getName() + ": even = " + current);
+            log.info("{}: even = {}", Thread.currentThread().getName(), current);
             current++;
 
             notifyAll();
@@ -47,7 +52,7 @@ public class NumberPrinter {
                 return;
             }
 
-            System.out.println(Thread.currentThread().getName() + ": odd = " + current);
+            log.info("{}: odd = {}", Thread.currentThread().getName(), current);
             current++;
 
             notifyAll();
